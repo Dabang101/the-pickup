@@ -31,7 +31,9 @@ class MainHandler(webapp2.RequestHandler):
 
 
 class Location(ndb.Model):
+    name = ndb.StringProperty()
     address = ndb.StringProperty()
+    sports = ndb.StringProperty(repeated = True)
 
 class Player(ndb.Model):
     #link this to the Users API
@@ -50,11 +52,16 @@ class SearchHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write("Go back...you forgot to enter your sport and/or location")
     def post(self):
-        self.response.write("These are the locations")
+        search_template = jinja_environment.get_template('templates/search.html')
+        search_vars= {"sport": self.request.get("sport_form"),
+                      "location": self.request.get("location_form")
+                     }
+        self.response.out.write(search_template.render(search_vars))
+
 
 
 montrose_beach=Location(address="555 N Lake Shore Drive")
-wicker_park=Location(address="1600 N. Ashland")
+wicker_park=Location(name="Wicker Park", address="1600 N. Ashland", sports=["basketball","ultimate","baseball"])
 player1=Player(name="nicki", age=17)
     #, home_park=wicker_park.key)
 player2=Player(name="miles", age=16)
