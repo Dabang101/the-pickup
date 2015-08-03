@@ -17,14 +17,14 @@
 import webapp2
 import jinja2
 import os
-from google.appengine.ext import ndb
 
 jinja_environment = jinja2.Environment(loader=
     jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        sport = self.request.get("sport_form")
+        location = self.request.get("location")
         template = jinja_environment.get_template('templates/template.html')
         self.response.out.write(template.render())
 
