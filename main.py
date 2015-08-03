@@ -25,8 +25,8 @@ jinja_environment = jinja2.Environment(loader=
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
-        template = jinja_environment.get_template('templates/template.html')
-        self.response.out.write(template.render())
+        home_template = jinja_environment.get_template('templates/home.html')
+        self.response.out.write(home_template.render())
 
 
 class PickUpGame(ndb.Model):
