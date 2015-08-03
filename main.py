@@ -48,6 +48,8 @@ class PickUpGame(ndb.Model):
 
 class SearchHandler(webapp2.RequestHandler):
     def get(self):
+        self.response.write("Go back...you forgot to enter your sport and/or location")
+    def post(self):
         self.response.write("These are the locations")
 
 
