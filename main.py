@@ -24,38 +24,42 @@ jinja_environment = jinja2.Environment(loader=
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-
         sport = self.request.get("sport_form")
         location = self.request.get("location")
         home_template = jinja_environment.get_template('templates/home.html')
         self.response.out.write(home_template.render())
 
 
-
-class PickUpGame(ndb.Model):
-    sport = ndb.StringProperty()
-    time = ndb.DateTimeProperty()
-    location = ndb.KeyProperty(Location)
-    players = ndb.KeyProperty(Player, repeated=True)
-
 class Location(ndb.Model):
     address = ndb.StringProperty()
 
 class Player(ndb.Model):
     #link this to the Users API
-    nick_name = ndb.StringProperty()
+    name = ndb.StringProperty()
     age = ndb.IntegerProperty()
     home_park = ndb.KeyProperty(Location)
 
+class PickUpGame(ndb.Model):
+    sport = ndb.StringProperty()
+    time = ndb.StringProperty()
+    location = ndb.KeyProperty(Location)
+    players = ndb.KeyProperty(Player, repeated=True)
+
+
 class SearchHandler(webapp2.RequestHandler):
-    self.response.write('These are the locations')
+    def get(self):
+        self.response.write("These are the locations")
 
 
 montrose_beach=Location(address="555 N Lake Shore Drive")
 wicker_park=Location(address="1600 N. Ashland")
-player1=Player(name="nicki", age="17", home_park=wicker_park.key)
-player2=Player(name="miles", age ="16", home_park=montrose_beach.key)
-bball1 = PickUpGame(sport = "basketball", time="5:00", location = montrose_beach.key, players= [player1.key, player2.key])
+player1=Player(name="nicki", age=17)
+    #, home_park=wicker_park.key)
+player2=Player(name="miles", age=16)
+    #, home_park=montrose_beach.key)
+bball1 = PickUpGame(sport = "basketball", time="5:00 pm")
+    #, location = montrose_beach.key,
+    #players= [player1.key, player2.key])
 
 
 app = webapp2.WSGIApplication([
