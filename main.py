@@ -17,6 +17,7 @@
 import webapp2
 import jinja2
 import os
+from google.appengine.ext import ndb
 
 jinja_environment = jinja2.Environment(loader=
     jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -29,7 +30,8 @@ class MainHandler(webapp2.RequestHandler):
         home_template = jinja_environment.get_template('templates/home.html')
         self.response.out.write(home_template.render())
 
-        
+
+
 class PickUpGame(ndb.Model):
     sport = ndb.StringProperty()
     time = ndb.DateTimeProperty()
@@ -45,6 +47,10 @@ class Player(ndb.Model):
     age = ndb.IntegerProperty()
     home_park = ndb.KeyProperty(Location)
 
+class SearchHandler(webapp2.RequestHandler):
+    self.response.write('These are the locations')
+
+
 montrose_beach=Location(address="555 N Lake Shore Drive")
 wicker_park=Location(address="1600 N. Ashland")
 player1=Player(name="nicki", age="17", home_park=wicker_park.key)
@@ -53,5 +59,6 @@ bball1 = PickUpGame(sport = "basketball", time="5:00", location = montrose_beach
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/search', SearchHandler)
 ], debug=True)
