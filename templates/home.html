@@ -4,24 +4,24 @@
     <title> The Pickup </title>
     <link rel="stylesheet" type="text/css"  href="css-templates/home.css"></link>
   </head>
-  <body>
+  <body class="home_html">
     <form id="home_form" action ="/search" method="post" >
-      <h1> The Pickup </h1>
-      <div>
-      <h3> Pick a sport
-        <select name="sport_form" id="sport_form">
-          <option value="empty"> ------------ </option>
-          <option value="basketball"> Basketball </option>
-          <option value="ultimate"> Ultimate Frisbee </option>
-          <option value="tennis"> Tennis </option>
-          <option value="soccer"> Soccer </option>
-        </select>
-      </h3>
-      <h3> Type your location
+      <h1 class="main_title"> The Pickup </h1>
+      <div class="home_titles">
+        <h3> Pick a sport
+          <select name="sport_form" id="sport_form">
+            <option value="empty"> ------------ </option>
+            <option value="basketball"> Basketball </option>
+            <option value="ultimate"> Ultimate Frisbee </option>
+            <option value="tennis"> Tennis </option>
+            <option value="soccer"> Soccer </option>
+          </select>
+        </h3>
+        <h3> Type your location
           <input name="location_form" type="text" ></input>
-      </h3>
-      <p><input type="submit" value="Submit"></p>
-    </div>
+        </h3>
+        <p><input type="submit" value="Submit"></p>
+      </div>
     </form>
   </body>
 </html>
