@@ -1,0 +1,31 @@
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
+
+body {
+  text-align: center;
+  background-image: url("http://wp.production.patheos.com/blogs/slacktivist/files/2014/11/2169basketball_pickup_31.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+h1 {
+  font-family: 'Arvo', serif;
+  font-weight: 700;
+  font-size: 50pt;
+  color: #993333;
+  text-shadow: 1px 1px 1px #A34747;
+}
+
+h3 {
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  font-size: 25pt;
+  color: #993333;
+  text-shadow: 1px 1px 1px #A34747;
+}
+
+div {
+  margin-top: 14%;
+}
