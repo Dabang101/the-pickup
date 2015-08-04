@@ -8,19 +8,20 @@
     <link rel="stylesheet" type="text/css"  href="css-templates/home.css"></link>
   </head>
   <body>
-    <h4 class="signORlogout" align = right> {{signORlogout}} </h4>
-    <form id="home_form" action ="/search" method="post" >
-      <img src="PickUpLogo.png"></img>
-      <div>
-        <h3> Pick a sport
-          <select name="sport_form" id="sport_form">
-            <option value="empty">  </option>
-            <option value="basketball"> Basketball </option>
-            <option value="ultimate"> Ultimate Frisbee </option>
-            <option value="tennis"> Tennis </option>
-            <option value="soccer"> Soccer </option>
-          </select>
-        </h3>
+    <h4 class="signORlogout" align = right> {{signORlogout}} </h4> <br />
+    <br /> <img class="logo" height="180" src="images/imageedit_2_5121784050.gif"></img>
+    <div class="fixed-bg first">
+      <form id="home_form" action ="/search" method="post" >
+        <div>
+          <h3> Pick a sport
+            <select name="sport_form" id="sport_form">
+              <option value="empty">  </option>
+              <option value="basketball"> Basketball </option>
+              <option value="ultimate"> Ultimate Frisbee </option>
+              <option value="tennis"> Tennis </option>
+              <option value="soccer"> Soccer </option>
+            </select>
+          </h3>
           <!-- <h3> Pick a sport
           <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sport <span class="caret"></span>
@@ -37,7 +38,14 @@
           <input name="location_form" type="text" ></input>
         </h3>
         <p><input class="submit_button" type="submit" value="submit"></p>
+      </form>
       </div>
-    </form>
+      <!-- <div class="scrolling-bg second">
+        <div class="cd-container">
+          <h1> Explore </h1>
+          <p> Take a look at our website. Explore the courts and fields. </pd>
+          </div>
+      </div> -->
+
   </body>
 </html>

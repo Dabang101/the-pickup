@@ -20,8 +20,13 @@ body {
 h3 {
   font-family: 'Arvo', serif;
   font-weight: 400;
-  font-size: 25pt;
   color: #993333;
   text-shadow: 1px 1px 1px #A34747;
   margin-bottom: 1px;
+}
+
+.logo {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 0%;
 }

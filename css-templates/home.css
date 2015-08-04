@@ -9,6 +9,16 @@ body {
   background-position: center;
 }
 
+.signORlogout {
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  color: whitesmoke;
+  padding: 5px 1px 5px 1px;
+  /*display: inline-block;*/
+  /*float: right;*/
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 0%;
+}
 
 .main_title {
   font-family: 'Arvo', serif;
@@ -38,12 +48,9 @@ h3 {
   background-color: whitesmoke;
 }
 
-.signORlogout {
-  font-family: 'Arvo', serif;
-  font-weight: 400;
-  background-color: whitesmoke;
-  padding: 5px 1px 5px 1px;
-  display: block;
-  float: right;
-  border-radius: 5px 5px 5px 5px;
-}
+
+/*
+.logo{
+  margin-left: auto;
+  margin-right: auto;
+}*/
