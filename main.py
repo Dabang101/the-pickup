@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from google.appengine.api import users
 import webapp2
 import jinja2
 import os
@@ -27,7 +28,21 @@ class MainHandler(webapp2.RequestHandler):
         sport = self.request.get("sport_form")
         location = self.request.get("location")
         home_template = jinja_environment.get_template('templates/home.html')
-        self.response.out.write(home_template.render())
+
+        user = users.get_current_user()
+        if user:
+            nickname=user.nickname()
+            logout=users.create_logout_url('/')
+            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(nickname, logout))
+            temp_dic ={"signORlogout": greeting}
+        else:
+            login=users.create_login_url('/')
+            greeting = ('<a href="%s">Sign in or register</a>.' %login)
+            #self.response.out.write(greeting)
+            temp_dic ={"signORlogout": greeting}
+
+        self.response.out.write(home_template.render(temp_dic))
+
 
 
 class Location(ndb.Model):
@@ -73,5 +88,6 @@ bball1 = PickUpGame(sport = "basketball", time="5:00 pm")
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/search', SearchHandler)
+    ('/search', SearchHandler),
+    #("/user", UserHandler)
 ], debug=True)
