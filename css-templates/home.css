@@ -37,3 +37,13 @@ h3 {
   font-size: 12pt;
   background-color: whitesmoke;
 }
+
+.signORlogout {
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  background-color: whitesmoke;
+  padding: 5px 1px 5px 1px;
+  display: block;
+  float: right;
+  border-radius: 5px 5px 5px 5px;
+}
