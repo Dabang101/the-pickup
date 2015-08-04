@@ -43,15 +43,24 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.out.write(home_template.render(temp_dic))
 
-
+class Sport(ndb.Model):
+    name = ndb.StringProperty()
 
 class Location(ndb.Model):
     name = ndb.StringProperty()
     address = ndb.StringProperty()
     sports = ndb.KeyProperty(Sport, repeated = True)
 
-class Sport(ndb.Model):
-    name = ndb.StringProperty()
+basketball = Sport(name = "basketball")
+basketball.put()
+ultimate = Sport(name = "ultimate")
+ultimate.put()
+tennis = Sport(name = "tennis")
+tennis.put()
+soccer = Sport(name = "soccer")
+soccer.put()
+baseball = Sport(name = "baseball")
+baseball.put()
 
 class Player(ndb.Model):
     #link this to the Users API
@@ -73,20 +82,17 @@ class SearchHandler(webapp2.RequestHandler):
         search_template = jinja_environment.get_template('templates/search.html')
         search_vars= {"sport": self.request.get("sport_form"),
                       "location": self.request.get("location_form"),
-                      
+
                      }
         self.response.out.write(search_template.render(search_vars))
 
 
-basketball = Sport(name = basketball)
-ultimate = Sport(name = basketball)
-tennis = Sport(name = tennis)
-soccer = Sport(name = soccer)
-montrose_beach=Location(address="555 N Lake Shore Drive")
-wicker_park=Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key, baseball.key])
-player1=Player(name="nicki", age=17)
+
+montrose_beach = Location(address="555 N Lake Shore Drive")
+wicker_park = Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key])
+player1 = Player(name="nicki", age=17)
     #, home_park=wicker_park.key)
-player2=Player(name="miles", age=16)
+player2 = Player(name="miles", age=16)
     #, home_park=montrose_beach.key)
 bball1 = PickUpGame(sport = "basketball", time="5:00 pm")
     #, location = montrose_beach.key,
