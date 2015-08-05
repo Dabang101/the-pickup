@@ -51,16 +51,7 @@ class Location(ndb.Model):
     address = ndb.StringProperty()
     sports = ndb.KeyProperty(Sport, repeated = True)
 
-# basketball = Sport(name = "basketball")
-# basketball.put()
-# ultimate = Sport(name = "ultimate")
-# ultimate.put()
-# tennis = Sport(name = "tennis")
-# tennis.put()
-# soccer = Sport(name = "soccer")
-# soccer.put()
-# baseball = Sport(name = "baseball")
-# baseball.put()
+
 
 class Player(ndb.Model):
     #link this to the Users API
@@ -74,6 +65,18 @@ class PickUpGame(ndb.Model):
     location = ndb.KeyProperty(Location)
     players = ndb.KeyProperty(Player, repeated=True)
 
+
+
+basketball = Sport(name = "basketball")
+basketball.put()
+ultimate = Sport(name = "ultimate")
+ultimate.put()
+# tennis = Sport(name = "tennis")
+# tennis.put()
+# soccer = Sport(name = "soccer")
+# soccer.put()
+# baseball = Sport(name = "baseball")
+# baseball.put()
 montrose_beach = Location(address="555 N Lake Shore Drive")
 wicker_park = Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key])
 wicker_park.put()
