@@ -13,10 +13,12 @@
     <h4 align = right> {{signORlogout}} </h4>
     <br /> <img class="logo" height="180" src="images/imageedit_2_5121784050.gif"></img>
     <!-- <h1 class="main_title"> The Pickup </h1> -->
-    <div>
-      <h3> Your sport: {{sport}} <br /> </h3>
-      <h3> Your location: {{location}} <br /> </h3>
-      <h2> Locations near you: </h2>
+
+    <h3> Your sport: {{sport}} <br /> </h3>
+    <h3> Your location: {{location}} <br /> </h3>
+    <div class ="locations">
+      <!-- <br /> -->
+      <h2> <center> Locations near you: <center> </h2>
 
       <ol type="A"> {% for result in results %}
         <li> {{ result.name }} </li>
@@ -24,8 +26,10 @@
             <li> address : {{ result.address }} </li>
           </ul>
           {% endfor %}
-      </ol>
-    </div>
+      </ol> <br />
+    </div >
+
     <div id='maps-canvas'></div>
+
   </body>
 </html>
