@@ -91,10 +91,32 @@ class ResultsHandler(webapp2.RequestHandler):
                      }
         self.response.out.write(results_template.render(results_vars))
 
+class AddedHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write("Go back...you forgot to enter your sport and/or location")
 
+    def post(self):
+        sport_key = None
+        sportadded = self.request.get("addsport_form")
+        # if the sport exists, sport_key is known
+        # self.response.write(Sport.query(Sport.name == sportadded).fetch())
+        if Sport.query(Sport.name == sportadded).fetch():
+            sport_key = Sport.query(Sport.name == sportadded).fetch()[0].key
+            #self.response.write("Your sport already exists")
+        # else, add sport and get new key
+        else:
+            sport = Sport(name=sportadded)
+            sport.put()
+            sport_key = sport.key
+        #self.response.write(sport_key)
+        addeditem = Location(name = self.request.get("addname"),
+                              address = self.request.get("addlocation"),
+                              sports = [sport_key])
+        addeditem.put()
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/results', ResultsHandler),
+    ('/added', AddedHandler)
     #("/user", UserHandler)
 ], debug=True)

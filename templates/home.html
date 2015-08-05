@@ -42,15 +42,22 @@
       </form>
       </div>
 
-      <form id="add_form"  method="post">
+      <form id="add_form"  method="post" action=/added>
       Type Name of Place here:
       <input name=addname type = "text"></type>
       Type Address here:
       <input name=addlocation type = "text"></type>
       Type the sport you can play here:
-      <input name=addsport type = "text"></type>
+      <select name="addsport_form" id="addsport_form">
+        <option value="empty">  </option>
+        <option value="basketball"> Basketball </option>
+        <option value="ultimate"> Ultimate Frisbee </option>
+        <option value="tennis"> Tennis </option>
+        <option value="soccer"> Soccer </option>
+        <option value="baseball"> Baseball </option>
+      </select>
       Add a new location to our database!
-      <input type=submit action= "/added" > </input>
+      <input type=submit> </input>
     </form>
       <!-- <div class="scrolling-bg second">
         <div class="cd-container">
