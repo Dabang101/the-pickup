@@ -63,9 +63,8 @@ class Location(ndb.Model):
 # soccer.put()
 # baseball = Sport(name = "baseball")
 # baseball.put()
-#
-#
-#
+
+
 # montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
 # montrose_beach.put()
 # wicker_park = Location(name="Wicker Park", address="1600 N. Ashland 60622", sports=[basketball.key, ultimate.key, baseball.key])
