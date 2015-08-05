@@ -46,3 +46,10 @@ h3 {
   float: right;
   display: block;
 }
+
+#maps-canvas{
+  height: 400px;
+  width: 600px;
+  float: right;
+  margin-bottom: 25%;
+}

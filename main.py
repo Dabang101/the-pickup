@@ -100,9 +100,10 @@ class SearchHandler(webapp2.RequestHandler):
                       "location": self.request.get("location_form")
                      }
         self.response.out.write(search_template.render(search_vars))
-        self.response.write(result_location)
+        self.response.write("<ol> " + wicker_park.name +"</ol>")
 
-
+# display lat and long of the users location
+#
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
