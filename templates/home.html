@@ -38,26 +38,22 @@
         <h3> Type your location
           <input name="location_form" type="text" ></input>
         </h3>
-        <p><input class="submit_button" type="submit" value="submit"></p>
+        <p> <input class="submit_button" type="submit" value="submit"> </p>
       </form>
       </div>
+      <form id="add_form" class="add_location_form" method="post" action= "/added">
+        <h3> Do you have your own location?! </h3>
+        <h4> Let us and The Pickup community know about other places available to play! </h4>
+        <h4> Name of Place : </h4>
+        <input name=addname type = "text"></type>
+        <h4> Address: </h4>
+        <input name=addlocation type = "text"></type>
+        <h4> The pickup sport you can play here:</h4>
+        <input name=addsport type = "text"></type>
+        <h4> Add a new location to our database! </h4>
+        <input class="submit_button" type=submit  > </input>
+        <br />
 
-      <form id="add_form"  method="post" action=/added>
-      Type Name of Place here:
-      <input name=addname type = "text"></type>
-      Type Address here:
-      <input name=addlocation type = "text"></type>
-      Type the sport you can play here:
-      <select name="addsport_form" id="addsport_form">
-        <option value="empty">  </option>
-        <option value="basketball"> Basketball </option>
-        <option value="ultimate"> Ultimate Frisbee </option>
-        <option value="tennis"> Tennis </option>
-        <option value="soccer"> Soccer </option>
-        <option value="baseball"> Baseball </option>
-      </select>
-      Add a new location to our database!
-      <input type=submit> </input>
     </form>
       <!-- <div class="scrolling-bg second">
         <div class="cd-container">

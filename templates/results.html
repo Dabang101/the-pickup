@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCth4z0bqSZ7ijGJFqWZtdw4i7TRExTsNE"></script>
     <script src="scripts/results.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
   </head>
   <body>
     <h4 id="back_button"> ← Back to home page </h4>
@@ -17,8 +18,11 @@
       <h3> Your location: {{location}} <br /> </h3>
       <h2> Locations near you: </h2>
 
-      <ol> {% for result in results %}
+      <ol type="A"> {% for result in results %}
         <li> {{ result.name }} </li>
+          <ul>
+            <li> address : {{ result.address }} </li>
+          </ul>
           {% endfor %}
       </ol>
     </div>
