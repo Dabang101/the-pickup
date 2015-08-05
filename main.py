@@ -51,16 +51,16 @@ class Location(ndb.Model):
     address = ndb.StringProperty()
     sports = ndb.KeyProperty(Sport, repeated = True)
 
-basketball = Sport(name = "basketball")
-basketball.put()
-ultimate = Sport(name = "ultimate")
-ultimate.put()
-tennis = Sport(name = "tennis")
-tennis.put()
-soccer = Sport(name = "soccer")
-soccer.put()
-baseball = Sport(name = "baseball")
-baseball.put()
+# basketball = Sport(name = "basketball")
+# basketball.put()
+# ultimate = Sport(name = "ultimate")
+# ultimate.put()
+# tennis = Sport(name = "tennis")
+# tennis.put()
+# soccer = Sport(name = "soccer")
+# soccer.put()
+# baseball = Sport(name = "baseball")
+# baseball.put()
 
 class Player(ndb.Model):
     #link this to the Users API
@@ -74,22 +74,9 @@ class PickUpGame(ndb.Model):
     location = ndb.KeyProperty(Location)
     players = ndb.KeyProperty(Player, repeated=True)
 
-
-class SearchHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write("Go back...you forgot to enter your sport and/or location")
-    def post(self):
-        search_template = jinja_environment.get_template('templates/search.html')
-        search_vars= {"sport": self.request.get("sport_form"),
-                      "location": self.request.get("location_form"),
-
-                     }
-        self.response.out.write(search_template.render(search_vars))
-
-
-
 montrose_beach = Location(address="555 N Lake Shore Drive")
 wicker_park = Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key])
+wicker_park.put()
 player1 = Player(name="nicki", age=17)
     #, home_park=wicker_park.key)
 player2 = Player(name="miles", age=16)
@@ -97,6 +84,23 @@ player2 = Player(name="miles", age=16)
 bball1 = PickUpGame(sport = "basketball", time="5:00 pm")
     #, location = montrose_beach.key,
     #players= [player1.key, player2.key])
+
+
+class SearchHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write("Go back...you forgot to enter your sport and/or location")
+    def post(self):
+        search_template = jinja_environment.get_template('templates/search.html')
+        #sport_key = Sport.query(Sport.name=='basketball').fetch()[0].key
+        sport_key = ndb.Key(Sport, 5647091720257536)
+        self.response.write(sport_key)
+        result_location = Location.query(Location.sports == sport_key).fetch()
+        search_vars= {"sport": self.request.get("sport_form"),
+                      "location": self.request.get("location_form")
+                     }
+        #self.response.out.write(search_template.render(search_vars))
+        self.response.write(result_location)
+
 
 
 app = webapp2.WSGIApplication([
