@@ -91,9 +91,6 @@ class ResultsHandler(webapp2.RequestHandler):
                      }
         self.response.out.write(results_template.render(results_vars))
 
-        # self.response.write( result_location )
-
-# display lat and long of the users location
 
 
 app = webapp2.WSGIApplication([
