@@ -30,3 +30,19 @@ h3 {
   margin-right: 25%;
   margin-top: 0%;
 }
+
+.back_button .signORlogout {
+    font-family: 'Arvo', serif;
+    font-weight: 400;
+    color: whitesmoke;
+    padding: 5px 1px 5px 1px;
+    /*display: inline-block;*/
+    /*float: right;*/
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 0%;
+  }
+
+.signORlogout{
+  float: right;
+  display: block;
+}

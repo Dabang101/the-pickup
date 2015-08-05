@@ -92,15 +92,15 @@ class SearchHandler(webapp2.RequestHandler):
         self.response.write("Go back...you forgot to enter your sport and/or location")
     def post(self):
         search_template = jinja_environment.get_template('templates/search.html')
-        #sport_key = Sport.query(Sport.name=='basketball').fetch()[0].key
+        sport_key = Sport.query(Sport.name=='basketball').fetch()[0].key
         # sport_key = ndb.Key(Sport, 5647091720257536)
         # self.response.write(sport_key)
-        # result_location = Location.query(Location.sports == sport_key).fetch()
+        result_location = Location.query(Location.sports == sport_key).fetch()
         search_vars= {"sport": self.request.get("sport_form"),
                       "location": self.request.get("location_form")
                      }
         self.response.out.write(search_template.render(search_vars))
-        # self.response.write(result_location)
+        self.response.write(result_location)
 
 
 
