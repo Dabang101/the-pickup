@@ -51,62 +51,53 @@ class Location(ndb.Model):
     address = ndb.StringProperty()
     sports = ndb.KeyProperty(Sport, repeated = True)
 
-class Player(ndb.Model):
-    #link this to the Users API
-    name = ndb.StringProperty()
-    age = ndb.IntegerProperty()
-    home_park = ndb.KeyProperty(Location)
-
-class PickUpGame(ndb.Model):
-    sport = ndb.StringProperty()
-    time = ndb.StringProperty()
-    location = ndb.KeyProperty(Location)
-    players = ndb.KeyProperty(Player, repeated=True)
 
 
-
-basketball = Sport(name = "basketball")
-basketball.put()
-ultimate = Sport(name = "ultimate")
-ultimate.put()
-# tennis = Sport(name = "tennis")
-# tennis.put()
-# soccer = Sport(name = "soccer")
-# soccer.put()
-# baseball = Sport(name = "baseball")
-# baseball.put()
-montrose_beach = Location(address="555 N Lake Shore Drive")
-wicker_park = Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key])
-wicker_park.put()
-player1 = Player(name="nicki", age=17)
-    #, home_park=wicker_park.key)
-player2 = Player(name="miles", age=16)
-    #, home_park=montrose_beach.key)
-bball1 = PickUpGame(sport = "basketball", time="5:00 pm")
-    #, location = montrose_beach.key,
-    #players= [player1.key, player2.key])
+#basketball = Sport(name = "basketball")
+# basketball.put()
+#ultimate = Sport(name = "ultimate")
+#ultimate.put()
+#tennis = Sport(name = "tennis")
+#tennis.put()
+#soccer = Sport(name = "soccer")
+#soccer.put()
+#baseball = Sport(name = "baseball")
+#baseball.put()
 
 
-class SearchHandler(webapp2.RequestHandler):
+
+#montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
+#montrose_beach.put()
+#wicker_park = Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key, baseball.key])
+#wicker_park.put()
+#humboldt_park = Location(name="Humboldt Park",sports=[basketball.key, ultimate.key])
+#humboldt_park.put()
+#smith_park = Location(name="Smith Park",sports=[basketball.key, ultimate.key])
+#smith_park.put()
+
+
+class ResultsHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write("Go back...you forgot to enter your sport and/or location")
     def post(self):
-        search_template = jinja_environment.get_template('templates/search.html')
-        sport_key = Sport.query(Sport.name=='basketball').fetch()[0].key
+        results_template = jinja_environment.get_template('templates/results.html')
+        sport_key = Sport.query(Sport.name== self.request.get("sport_form")).fetch()[0].key
+        result_location = Location.query(Location.sports == sport_key).fetch()
         # sport_key = ndb.Key(Sport, 5647091720257536)
         # self.response.write(sport_key)
-        result_location = Location.query(Location.sports == sport_key).fetch()
-        search_vars= {"sport": self.request.get("sport_form"),
-                      "location": self.request.get("location_form")
+        results_vars = {"sport": self.request.get("sport_form"),
+                      "location": self.request.get("location_form"),
+                      "results": result_location
                      }
-        self.response.out.write(search_template.render(search_vars))
-        self.response.write("<ol> " + wicker_park.name +"</ol>")
+        self.response.out.write(results_template.render(results_vars))
+
+        # self.response.write( result_location )
 
 # display lat and long of the users location
-#
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/search', SearchHandler),
+    ('/results', ResultsHandler),
     #("/user", UserHandler)
 ], debug=True)

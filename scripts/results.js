@@ -1,0 +1,1 @@
+$(document).ready(function() {  var map  var mapOptions = {    center: {lat: 44, lng: -90},    zoom: 8  }  map = new google.maps.Map($('#maps-canvas')[0], mapOptions)  $('#back_button').click(function(){      parent.history.back();      return false;    });});

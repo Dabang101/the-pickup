@@ -10,18 +10,19 @@ body {
 }
 
 .main_title {
-  font-family: 'Arvo', serif;
+  font-family: chalkduster;
   font-weight: 700;
   font-size: 50pt;
-  color: #993333;
-  text-shadow: 1px 1px 1px #A34747;
+  color: #FFAD5C;
+  text-shadow: 1px 1px 1px whitesmoke;
 }
 
 h3 {
-  font-family: 'Arvo', serif;
+  font-family: chalkduster;
   font-weight: 400;
-  color: #993333;
-  text-shadow: 1px 1px 1px #A34747;
+  font-size: 20pt;
+  color: #FFAD5C;
+  text-shadow: 1px 1px 1px whitesmoke;
   margin-bottom: 1px;
 }
 
@@ -31,7 +32,7 @@ h3 {
   margin-top: 0%;
 }
 
-.back_button .signORlogout {
+#back_button  {
     font-family: 'Arvo', serif;
     font-weight: 400;
     color: whitesmoke;
