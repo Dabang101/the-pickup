@@ -19,6 +19,9 @@
 
       <ol> {% for result in results %}
         <li> {{ result.name }} </li>
+          <ul>
+            <li> address : {{ result.address }} </li>
+          </ul>
           {% endfor %}
       </ol>
     </div>
