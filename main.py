@@ -85,9 +85,9 @@ class ResultsHandler(webapp2.RequestHandler):
         # sport_key = ndb.Key(Sport, 5647091720257536)
         # self.response.write(sport_key)
         results_vars = {"sport": self.request.get("sport_form"),
-                      "location": self.request.get("location_form"),
-                      "results": result_location
-                     }
+                        "location": self.request.get("location_form"),
+                        "results": result_location
+                       }
         self.response.out.write(results_template.render(results_vars))
 
 class AddedHandler(webapp2.RequestHandler):
@@ -112,6 +112,8 @@ class AddedHandler(webapp2.RequestHandler):
                               address = self.request.get("addlocation"),
                               sports = [sport_key])
         addeditem.put()
+
+        self.response.write("THANK YOU! We appreciate you contributing to our database and community")
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
