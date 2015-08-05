@@ -53,27 +53,27 @@ class Location(ndb.Model):
 
 
 
-#basketball = Sport(name = "basketball")
+# basketball = Sport(name = "basketball")
 # basketball.put()
-#ultimate = Sport(name = "ultimate")
-#ultimate.put()
-#tennis = Sport(name = "tennis")
-#tennis.put()
-#soccer = Sport(name = "soccer")
-#soccer.put()
-#baseball = Sport(name = "baseball")
-#baseball.put()
-
-
-
-#montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
-#montrose_beach.put()
-#wicker_park = Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key, baseball.key])
-#wicker_park.put()
-#humboldt_park = Location(name="Humboldt Park",sports=[basketball.key, ultimate.key])
-#humboldt_park.put()
-#smith_park = Location(name="Smith Park",sports=[basketball.key, ultimate.key])
-#smith_park.put()
+# ultimate = Sport(name = "ultimate")
+# ultimate.put()
+# tennis = Sport(name = "tennis")
+# tennis.put()
+# soccer = Sport(name = "soccer")
+# soccer.put()
+# baseball = Sport(name = "baseball")
+# baseball.put()
+#
+#
+#
+# montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
+# montrose_beach.put()
+# wicker_park = Location(name="Wicker Park", address="1600 N. Ashland", sports=[basketball.key, ultimate.key, baseball.key])
+# wicker_park.put()
+# humboldt_park = Location(name="Humboldt Park",sports=[basketball.key, ultimate.key])
+# humboldt_park.put()
+# smith_park = Location(name="Smith Park",sports=[basketball.key, ultimate.key])
+# smith_park.put()
 
 
 class ResultsHandler(webapp2.RequestHandler):
@@ -91,9 +91,6 @@ class ResultsHandler(webapp2.RequestHandler):
                      }
         self.response.out.write(results_template.render(results_vars))
 
-        # self.response.write( result_location )
-
-# display lat and long of the users location
 
 
 app = webapp2.WSGIApplication([
