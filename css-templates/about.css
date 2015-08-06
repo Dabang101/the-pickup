@@ -1,5 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
 
+#team {
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0.9);;
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  float:left;
+  border-radius: 15px 15px 15px 15px;
+  /*padding: 10px;
+  margin-right: 50%;*/
+  margin-bottom: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
 body {
   text-align: center;
   background-image: url("http://www.mustangsoccer.ca/wp-content/uploads/2013/12/iStock_000009222390Large.jpg");
@@ -55,18 +70,10 @@ p {
 }
 
 
-.team {
-  background-color: rgba(255, 255, 255, 0.3);;
-  font-family: 'Arvo', serif;
-  font-weight: 400;
-  margin-left: 15%;
-  margin-right: 15%;
-  border-radius: 15px 15px 15px 15px;
-  padding: 10px;
-}
-
-.team .member {
+.member {
   width: calc(100%/3);
   float: left;
+  font-family: 'Arvo', serif;
+  font-weight: 400;
   /*padding: 16px auto;*/
 }
