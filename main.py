@@ -114,9 +114,16 @@ class AddedHandler(webapp2.RequestHandler):
 
         self.response.write("THANK YOU! We appreciate you contributing to our database and community")
 
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        about_template = jinja_environment.get_template('templates/about.html')
+        self.response.out.write(about_template.render())
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/results', ResultsHandler),
-    ('/added', AddedHandler)
+    ('/added', AddedHandler),
+    ('/about', AboutHandler)
     #("/user", UserHandler)
 ], debug=True)

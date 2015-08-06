@@ -9,17 +9,18 @@
   </head>
   <body>
     <ul class="nav nav-tabs">
-  <li class="active">
-    <a href="/">Home</a>
-  </li>
-  <li><a href="/added"> Add a Location to Our Database! </a></li>
-  <li><a href="#"> About </a></li>
-</ul>
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/added"> Add a Location to Our Database! </a></li>
+      <li><a href="/about"> About </a></li>
+    </ul>
+
     <h4 class="signORlogout" align = right> {{signORlogout}} </h4> <br />
     <br /> <img class="logo" height="180" src="images/imageedit_2_5121784050.gif"></img>
+    <h2> Your grab and go for your favorite sports anywhere </h2>
+
     <div class="fixed-bg first">
       <form id="home_form" action ="/results" method="post" >
-        <div>
+          <br />
           <h3> Pick a sport
             <select name="sport_form" id="sport_form">
               <option value="empty">  </option>
@@ -31,18 +32,15 @@
             </select>
           </h3>
         <h3> Type your location
-          <input name="location_form" type="text" ></input>
+          <div class="form-group"><p><input class="form-control" name="location_form" type="text" placeholder="Address"></input></p></div>
         </h3>
-        <p> <input class="submit_button" type="submit" value="submit"> </p>
+        <p> <input class="btn btn-default" type="submit" value="submit"> </p>
       </form>
-      </div>
 
-      <div class="scrolling-bg second">
-        <div class="cd-container">
-          <h1> Explore </h1>
-          <p> Take a look at our website. Explore the courts and fields. </pd>
-          </div>
-      </div>
+      <h1> Explore </h1>
+      <p> Take a look at our website. Explore the courts and fields. </p>
+      <br />
+    </div>
 
   </body>
 </html>
