@@ -94,12 +94,10 @@ class AddedHandler(webapp2.RequestHandler):
     def get(self):
 
         sport_key = None
-        if self.request.get('addsport')== "":
-            self.response.out.write("You have not selected anything! Please go back!")
-        else:
-            sportadded = self.request.get("addsport")
-            add_template = jinja_environment.get_template('templates/add.html')
-            self.response.out.write(add_template.render())
+
+        sportadded = self.request.get("addsport")
+        add_template = jinja_environment.get_template('templates/add.html')
+        self.response.out.write(add_template.render())
         # if the sport exists, sport_key is known
         # self.response.write(Sport.query(Sport.name == sportadded).fetch())
         if Sport.query(Sport.name == sportadded).fetch():
