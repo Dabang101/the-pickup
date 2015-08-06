@@ -9,12 +9,15 @@ body {
   background-position: center;
 }
 
-.main_title {
-  font-family: chalkduster;
-  font-weight: 700;
-  font-size: 50pt;
+.nav{
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  font-size: 12pt;
   color: #FFAD5C;
-  text-shadow: 1px 1px 1px whitesmoke;
+}
+
+a {
+  color: #FFAD5C;
 }
 
 h3 {

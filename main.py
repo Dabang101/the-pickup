@@ -23,9 +23,18 @@ from google.appengine.ext import ndb
 jinja_environment = jinja2.Environment(loader=
     jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-class MainHandler(webapp2.RequestHandler):
 
-    if Sport.query.fetch():
+class Sport(ndb.Model):
+    name = ndb.StringProperty()
+
+class Location(ndb.Model):
+    name = ndb.StringProperty()
+    address = ndb.StringProperty()
+    sports = ndb.KeyProperty(Sport, repeated = True)
+
+
+class MainHandler(webapp2.RequestHandler):
+    if Sport.query().fetch():
         pass
     else:
         basketball = Sport(name = "basketball")
@@ -42,7 +51,7 @@ class MainHandler(webapp2.RequestHandler):
         montrose_beach.put()
         wicker_park = Location(name="Wicker Park", address="1600 N. Ashland 60622", sports=[basketball.key, ultimate.key, baseball.key])
         wicker_park.put()
-        humboldt_park = Location(name="Humboldt Park", address="1400 N Humboldt Dr 60622" ,sports=[basketball.key, ultimate.key])
+        humboldt_park = Location(name="Humboldt Park", address="1400 N Humboldt Dr 60622" ,sports=[tennis.key, basketball.key, ultimate.key])
         humboldt_park.put()
         smith_park = Location(name="Smith Park",address="2526 W Grand Ave 60612" ,sports=[basketball.key, ultimate.key])
         smith_park.put()
@@ -67,13 +76,6 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.out.write(home_template.render(temp_dic))
 
-class Sport(ndb.Model):
-    name = ndb.StringProperty()
-
-class Location(ndb.Model):
-    name = ndb.StringProperty()
-    address = ndb.StringProperty()
-    sports = ndb.KeyProperty(Sport, repeated = True)
 
 class ResultsHandler(webapp2.RequestHandler):
     def get(self):
@@ -82,8 +84,6 @@ class ResultsHandler(webapp2.RequestHandler):
         results_template = jinja_environment.get_template('templates/results.html')
         sport_key = Sport.query(Sport.name== self.request.get("sport_form")).fetch()[0].key
         result_location = Location.query(Location.sports == sport_key).fetch()
-        # sport_key = ndb.Key(Sport, 5647091720257536)
-        # self.response.write(sport_key)
         results_vars = {"sport": self.request.get("sport_form"),
                         "location": self.request.get("location_form"),
                         "results": result_location
@@ -116,7 +116,6 @@ class AddedHandler(webapp2.RequestHandler):
         addeditem.put()
 
 class Thank_youHandler(webapp2.RequestHandler):
-
     def get(self):
         Thank_you_template = jinja_environment.get_template('templates/Thank_you.html')
         self.response.out.write(Thank_you_template.render())
@@ -133,15 +132,21 @@ class Thank_youHandler(webapp2.RequestHandler):
             sport.put()
             sport_key = sport.key
         addeditem = Location(name = self.request.get("addname"),
-                              address = self.request.get("addlocation"),
-                              sports = [sport_key])
+                             address = self.request.get("addlocation"),
+                             sports = [sport_key])
         addeditem.put()
 
+
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        about_template = jinja_environment.get_template('templates/about.html')
+        self.response.out.write(about_template.render())
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/results', ResultsHandler),
     ('/added', AddedHandler),
+    ('/about', AboutHandler),
     ("/Thank_you", Thank_youHandler)
 ], debug=True)

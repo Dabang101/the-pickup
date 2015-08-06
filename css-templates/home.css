@@ -9,6 +9,17 @@ body {
   background-position: center;
 }
 
+.nav{
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  font-size: 12pt;
+  color: #FFAD5C;
+}
+
+a {
+  color: #FFAD5C;
+}
+
 .signORlogout {
   font-family: chalkduster;
   font-weight: 400;
@@ -20,18 +31,23 @@ body {
   margin-top: 0%;
 }
 
-.main_title {
-  font-family: chalkduster;
-  font-weight: 700;
-  font-size: 50pt;
-  color: #FFAD5C;
-  text-shadow: 1px 1px 1px whitesmoke;
-}
-
 div {
-  margin-top: 14%;
+  background-color: rgba(255, 255, 255, 0.9);;
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  margin-left: 17%;
+  margin-right: 20%;
+  border-radius: 15px 15px 15px 15px;
+  padding: 3px 3px 3px 3px;
 }
 
+h2 {
+  font-family: 'Arvo', serif;
+  font-weight: 400;
+  color: #FFAD5C;
+  text-shadow: 1px 1px 1px black;
+  margin-top: 0;
+}
 h3 {
   font-family: chalkduster;
   font-weight: 400;
@@ -49,14 +65,6 @@ h3 {
   margin-bottom: 3%;
 }
 
-.add_location_form{
-  background-color: rgba(255, 255, 255, 0.9);;
-  font-family: 'Arvo', serif;
-  font-weight: 400;
-  margin-left: 17%;
-  margin-right: 20%;
-  border-radius: 15px 15px 15px 15px;
-}
 
 #Thank_you{
   display: none;
