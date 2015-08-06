@@ -96,7 +96,7 @@ class AddedHandler(webapp2.RequestHandler):
         self.response.out.write(add_template.render())
         #self.response.write("Go back...you forgot to enter your sport and/or location")
         sport_key = None
-        sportadded = self.request.get("addsport_form")
+        sportadded = self.request.get("addsport")
         # if the sport exists, sport_key is known
         # self.response.write(Sport.query(Sport.name == sportadded).fetch())
         if Sport.query(Sport.name == sportadded).fetch():
@@ -112,11 +112,33 @@ class AddedHandler(webapp2.RequestHandler):
                               sports = [sport_key])
         addeditem.put()
 
-        self.response.write("THANK YOU! We appreciate you contributing to our database and community")
+class Thank_youHandler(webapp2.RequestHandler):
+
+    def get(self):
+        Thank_you_template = jinja_environment.get_template('templates/Thank_you.html')
+        self.response.out.write(Thank_you_template.render())
+        sport_key = None
+        sportadded = self.request.get("addsport")
+        # if the sport exists, sport_key is known
+        # self.response.write(Sport.query(Sport.name == sportadded).fetch())
+        if Sport.query(Sport.name == sportadded).fetch():
+            sport_key = Sport.query(Sport.name == sportadded).fetch()[0].key
+            #self.response.write("Your sport already exists")
+        # else, add sport and get new key
+        else:
+            sport = Sport(name=sportadded)
+            sport.put()
+            sport_key = sport.key
+        addeditem = Location(name = self.request.get("addname"),
+                              address = self.request.get("addlocation"),
+                              sports = [sport_key])
+        addeditem.put()
+
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/results', ResultsHandler),
-    ('/added', AddedHandler)
-    #("/user", UserHandler)
+    ('/added', AddedHandler),
+    ("/Thank_you", Thank_youHandler)
 ], debug=True)
