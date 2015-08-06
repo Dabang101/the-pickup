@@ -34,29 +34,31 @@ class Location(ndb.Model):
 
 
 class MainHandler(webapp2.RequestHandler):
-    if Sport.query().fetch():
-        pass
-    else:
-        basketball = Sport(name = "basketball")
-        basketball.put()
-        ultimate = Sport(name = "ultimate")
-        ultimate.put()
-        tennis = Sport(name = "tennis")
-        tennis.put()
-        soccer = Sport(name = "soccer")
-        soccer.put()
-        baseball = Sport(name = "baseball")
-        baseball.put()
-        montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
-        montrose_beach.put()
-        wicker_park = Location(name="Wicker Park", address="1600 N. Ashland 60622", sports=[basketball.key, ultimate.key, baseball.key])
-        wicker_park.put()
-        humboldt_park = Location(name="Humboldt Park", address="1400 N Humboldt Dr 60622" ,sports=[tennis.key, basketball.key, ultimate.key])
-        humboldt_park.put()
-        smith_park = Location(name="Smith Park",address="2526 W Grand Ave 60612" ,sports=[basketball.key, ultimate.key])
-        smith_park.put()
+
 
     def get(self):
+
+        if Sport.query().fetch() !=[]:
+            pass
+        else:
+            basketball = Sport(name = "basketball")
+            basketball.put()
+            ultimate = Sport(name = "ultimate")
+            ultimate.put()
+            tennis = Sport(name = "tennis")
+            tennis.put()
+            soccer = Sport(name = "soccer")
+            soccer.put()
+            baseball = Sport(name = "baseball")
+            baseball.put()
+            montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
+            montrose_beach.put()
+            wicker_park = Location(name="Wicker Park", address="1600 N. Ashland 60622", sports=[basketball.key, ultimate.key, baseball.key])
+            wicker_park.put()
+            humboldt_park = Location(name="Humboldt Park", address="1400 N Humboldt Dr 60622" ,sports=[tennis.key, basketball.key, ultimate.key])
+            humboldt_park.put()
+            smith_park = Location(name="Smith Park",address="2526 W Grand Ave 60612" ,sports=[basketball.key, ultimate.key])
+            smith_park.put()
 
         sport = self.request.get("sport_form")
         location = self.request.get("location")
@@ -94,7 +96,7 @@ class AddedHandler(webapp2.RequestHandler):
     def get(self):
 
         sport_key = None
-        sportadded = self.request.get("addsport")
+        sportadded = self.request.get("addsport").lower()
         add_template = jinja_environment.get_template('templates/add.html')
         self.response.out.write(add_template.render())
         # if the sport exists, sport_key is known
@@ -117,7 +119,7 @@ class Thank_youHandler(webapp2.RequestHandler):
         Thank_you_template = jinja_environment.get_template('templates/Thank_you.html')
         self.response.out.write(Thank_you_template.render())
         sport_key = None
-        sportadded = self.request.get("addsport")
+        sportadded = self.request.get("addsport").lower()
         # if the sport exists, sport_key is known
         # self.response.write(Sport.query(Sport.name == sportadded).fetch())
         if Sport.query(Sport.name == sportadded).fetch():
