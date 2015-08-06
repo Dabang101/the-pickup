@@ -16,19 +16,14 @@ body {
   color: #FFAD5C;
 }
 
-a {
-  color: #FFAD5C;
+#sign_in{
+  float: right;
+  color: whitesmoke;
 }
 
-.signORlogout {
-  font-family: chalkduster;
-  font-weight: 400;
-  color: whitesmoke;
-  padding: 5px 1px 5px 1px;
-  /*display: inline-block;*/
-  /*float: right;*/
-  border-radius: 5px 5px 5px 5px;
-  margin-top: 0%;
+
+a {
+  color: #FFAD5C;
 }
 
 div {
@@ -38,7 +33,7 @@ div {
   margin-left: 17%;
   margin-right: 20%;
   border-radius: 15px 15px 15px 15px;
-  padding: 3px 3px 3px 3px;
+  padding: 5px;
 }
 
 h2 {

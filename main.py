@@ -70,7 +70,7 @@ class MainHandler(webapp2.RequestHandler):
             temp_dic ={"signORlogout": greeting}
         else:
             login=users.create_login_url('/')
-            greeting = ('<a href="%s">Sign in or register</a>.' %login)
+            greeting = ('<a href="%s">Sign in or register</a>' %login)
             #self.response.out.write(greeting)
             temp_dic ={"signORlogout": greeting}
 
