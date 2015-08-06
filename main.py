@@ -92,9 +92,9 @@ class ResultsHandler(webapp2.RequestHandler):
 
 class AddedHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write("Go back...you forgot to enter your sport and/or location")
-
-    def post(self):
+        add_template = jinja_environment.get_template('templates/add.html')
+        self.response.out.write(add_template.render())
+        #self.response.write("Go back...you forgot to enter your sport and/or location")
         sport_key = None
         sportadded = self.request.get("addsport_form")
         # if the sport exists, sport_key is known
