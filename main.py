@@ -47,8 +47,6 @@ class MainHandler(webapp2.RequestHandler):
         soccer.put()
         baseball = Sport(name = "baseball")
         baseball.put()
-
-
         montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
         montrose_beach.put()
         wicker_park = Location(name="Wicker Park", address="1600 N. Ashland 60622", sports=[basketball.key, ultimate.key, baseball.key])
@@ -57,7 +55,9 @@ class MainHandler(webapp2.RequestHandler):
         humboldt_park.put()
         smith_park = Location(name="Smith Park",address="2526 W Grand Ave 60612" ,sports=[basketball.key, ultimate.key])
         smith_park.put()
+
     def get(self):
+
         sport = self.request.get("sport_form")
         location = self.request.get("location")
         home_template = jinja_environment.get_template('templates/home.html')
@@ -66,7 +66,7 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             nickname=user.nickname()
             logout=users.create_logout_url('/')
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(nickname, logout))
+            greeting = ('<a href="%s"> Welcome, %s! sign out</a>'%(logout, nickname))
             temp_dic ={"signORlogout": greeting}
         else:
             login=users.create_login_url('/')
@@ -92,11 +92,14 @@ class ResultsHandler(webapp2.RequestHandler):
 
 class AddedHandler(webapp2.RequestHandler):
     def get(self):
-        add_template = jinja_environment.get_template('templates/add.html')
-        self.response.out.write(add_template.render())
-        #self.response.write("Go back...you forgot to enter your sport and/or location")
+
         sport_key = None
-        sportadded = self.request.get("addsport")
+        if self.request.get('addsport')== "":
+            self.response.out.write("You have not selected anything! Please go back!")
+        else:
+            sportadded = self.request.get("addsport")
+            add_template = jinja_environment.get_template('templates/add.html')
+            self.response.out.write(add_template.render())
         # if the sport exists, sport_key is known
         # self.response.write(Sport.query(Sport.name == sportadded).fetch())
         if Sport.query(Sport.name == sportadded).fetch():
