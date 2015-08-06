@@ -66,7 +66,7 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             nickname=user.nickname()
             logout=users.create_logout_url('/')
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)'%(nickname, logout))
+            greeting = ('<a href="%s"> Welcome, %s! sign out</a>'%(logout, nickname))
             temp_dic ={"signORlogout": greeting}
         else:
             login=users.create_login_url('/')
@@ -94,7 +94,7 @@ class AddedHandler(webapp2.RequestHandler):
     def get(self):
 
         sport_key = None
-        if self.request.get('addsport')= None:
+        if self.request.get('addsport')== "":
             self.response.out.write("You have not selected anything! Please go back!")
         else:
             sportadded = self.request.get("addsport")

@@ -12,15 +12,16 @@
       <li class="active"><a href="/">Home</a></li>
       <li><a href="/added"> Add a Location to Our Database! </a></li>
       <li><a href="/about"> About </a></li>
+      <li> {{signORlogout}} </li>
     </ul>
 
-    <h4 class="signORlogout" align = right> {{signORlogout}} </h4>
+
     <img class="logo" height="180" src="images/imageedit_2_5121784050.gif"></img>
-    <h2> Your grab and go for your favorite sports anywhere </h2>
+    <h2> Your Grab and Go For Your Favorite Sports Anywhere </h2>
 
     <div class="fixed-bg first">
       <form id="home_form" action ="/results" method="post" >
-          <h3> Pick a sport
+          <h3> Pick a Sport
             <select name="sport_form" id="sport_form">
               <option value="empty">  </option>
               <option value="basketball"> Basketball </option>
@@ -30,7 +31,7 @@
               <option value="baseball"> Baseball </option>
             </select>
           </h3>
-        <h3> Type your location
+        <h3> Type Your Location or We'll Find You
           <div class="form-group"><p><input class="form-control" name="location_form" type="text" placeholder="Address"></input></p></div>
         </h3>
         <p> <input class="btn btn-default" type="submit" value="submit"> </p>
