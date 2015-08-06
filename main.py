@@ -63,8 +63,8 @@ class Location(ndb.Model):
 # soccer.put()
 # baseball = Sport(name = "baseball")
 # baseball.put()
-
-
+#
+#
 # montrose_beach = Location(name="Montrose Beach", address="555 N Lake Shore Drive", sports = [soccer.key, ultimate.key])
 # montrose_beach.put()
 # wicker_park = Location(name="Wicker Park", address="1600 N. Ashland 60622", sports=[basketball.key, ultimate.key, baseball.key])
@@ -107,7 +107,6 @@ class AddedHandler(webapp2.RequestHandler):
             sport = Sport(name=sportadded)
             sport.put()
             sport_key = sport.key
-        #self.response.write(sport_key)
         addeditem = Location(name = self.request.get("addname"),
                               address = self.request.get("addlocation"),
                               sports = [sport_key])
