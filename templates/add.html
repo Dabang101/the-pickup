@@ -1,8 +1,11 @@
 <html>
   <head>
     <title> The Pickup </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src= "scripts/add.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css"  href="css-templates/home.css"></link>
   </head>
   <body>
@@ -16,7 +19,8 @@
     <h4 class="signORlogout" align = right> {{signORlogout}} </h4> <br />
     <br /> <img class="logo" height="180" src="images/imageedit_2_5121784050.gif"></img>
     <div class="fixed-bg first">
-      <form id="add_form" class="add_location_form" method="post" action= "/added">
+      <form id="add_form" class="add_location_form" action = "/Thank_you">
+        <div id = "Thank_you" > THANK YOU! We appreciate you contributing to our database and community! </div>
         <h3> Do you have your own location?! </h3>
         <h4> Let us and The Pickup community know about other places available to play! </h4>
         <h4> Name of Place : </h4>
@@ -26,7 +30,7 @@
         <h4> The pickup sport you can play here:</h4>
         <input name=addsport type = "text"></type>
         <h4> Add a new location to our database! </h4>
-        <input class="submit_button" type=submit  > </input>
+        <input name= "submit_button" class="submit_button" type=submit  > </input>
         <br />
       </form>
   </body>
