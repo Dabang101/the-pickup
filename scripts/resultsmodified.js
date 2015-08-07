@@ -31,8 +31,8 @@ function initialize() {
 }
 
 function testFunction() {
-    var start = new google.maps.LatLng(41.89656950597816, -87.63920480568918);
-    var end = new google.maps.LatLng(41.8894973,-87.6289083);
+    var start = new google.maps.LatLng(41.8894973,-87.6289083)(41.89656950597816, -87.63920480568918);
+    var end = new google.maps.LatLng(41.89656950597816, -87.63920480568918);
 
     console.log("MARKER1");
     marker1 = new google.maps.Marker({
