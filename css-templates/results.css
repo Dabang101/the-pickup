@@ -20,6 +20,11 @@ a {
   color: #FFAD5C;
 }
 
+img.resize{
+    width: 70%; /* you can use % */
+    height: auto;
+}
+
 h3 {
   font-family: chalkduster;
   font-weight: 400;
@@ -32,11 +37,15 @@ h3 {
   margin-top: 0%;
 }
 
-.logo {
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-top: 0%;
+
+img.resize{
+    width: 70%; /* you can use % */
+    height: auto;
+    margin-top: 0%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
+
 
 #back_button  {
     font-family: 'Arvo', serif;

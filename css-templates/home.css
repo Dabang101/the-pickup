@@ -26,6 +26,12 @@ a {
   color: #FFAD5C;
 }
 
+img.resize{
+    width: 85%; /* you can use % */
+    height: auto;
+}
+
+
 div {
   background-color: rgba(255, 255, 255, 0.9);;
   font-family: 'Arvo', serif;
@@ -40,7 +46,7 @@ h2 {
   font-family: 'Arvo', serif;
   font-weight: 400;
   color: #FFAD5C;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 2px 2px 2px black;
   margin-top: 0;
 }
 h3 {

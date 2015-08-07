@@ -38,6 +38,11 @@ a {
   color: #3333FF;
 }
 
+img.resize{
+    width: 70%; /* you can use % */
+    height: auto;
+}
+
 .signORlogout {
   font-family: chalkduster;
   font-weight: 400;
