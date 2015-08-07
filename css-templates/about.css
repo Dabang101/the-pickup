@@ -1,4 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
+@import url(http://fonts.googleapis.com/css?family=Neucha);
+@import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(http://fonts.googleapis.com/css?family=Over+the+Rainbow);
 
 #team {
   font-family: 'Arvo', serif;
@@ -69,11 +72,25 @@ p {
     padding: 10px;
 }
 
+.team_pic {
+  height: 400px;
 
+}
 .member {
   width: calc(100%/3);
   float: left;
   font-family: 'Arvo', serif;
   font-weight: 400;
   /*padding: 16px auto;*/
+}
+
+#nazir {
+  font-family: 'Neucha', cursive;
+}
+
+#devang {
+  font-family: 'Permanent Marker', cursive;
+}
+#yulissa {
+  font-family: 'Over the Rainbow', cursive;
 }
