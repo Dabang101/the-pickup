@@ -9,7 +9,8 @@ $(document).ready( function() {
 
 
 // ------------------------------------------
-
+var marker1;
+var marker2;
 var map;
 var infowindow;
 var service;
@@ -19,47 +20,71 @@ var directionsService = new google.maps.DirectionsService();
 function initialize() {
 
   console.log("ohhh");
-  maps-canvas = new google.maps.Map(document.getElementById('maps-canvas'), {
+  map = new google.maps.Map(document.getElementById('maps-canvas'), {
                             center: {lat: 44, lng: 100},
                             zoom: 15
                           });
-  directionsDisplay.setMap(maps-canvas);
-  service = new google.maps.places.PlacesService(maps-canvas);
+  directionsDisplay.setMap(map);
+  service = new google.maps.places.PlacesService(map);
   infoWindow = new google.maps.InfoWindow();
   testFunction();
 }
 
 function testFunction() {
-    var start = new google.maps.LatLng(41.90742500122083,-87.67729600470253);
-    var end = new google.maps.LatLng(44.1, -90.5);
+    var start = new google.maps.LatLng(41.89656950597816, -87.63920480568918);
+    var end = new google.maps.LatLng(41.8894973,-87.6289083);
 
     console.log("MARKER1");
-    var marker1 = new google.maps.Marker({
-      map: maps-canvas,
+    marker1 = new google.maps.Marker({
+      map: map,
       position: start
     });
     console.log("MARKER2");
 
-    var marker2 = new google.maps.Marker({
-      map: maps-canvas,
+    marker2 = new google.maps.Marker({
+      map: map,
       position: end
     });
     console.log("SET CENTER");
     map.setCenter(marker1.position);
     map.setZoom(8);
     var request = {
-    origin:start,
-    destination: end,
-    travelMode: google.maps.TravelMode.DRIVING
-  };
-  directionsService.route(request, function(result, status) {
-    console.log(result);
-    console.log(status);
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(result);
-    }
-  });
-}
+      origin:start,
+      destination: end,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request,
+            function(result, status) {
+              console.log(result);
+              console.log(status);
+              if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(result);
+
+                marker1.setMap(map);
+                google.maps.event.addDomListener(window, 'load', initialize);
+              }
+            });
+
+
+      }
+
+
+
+
+
+    // if(navigator.geolocation) {
+    // navigator.geolocation.getCurrentPosition(function(position) {
+    //   var pos = new google.maps.LatLng(position.coords.latitude,
+    //                                    position.coords.longitude);
+    //
+    //   var infowindow = new google.maps.InfoWindow({
+    //     map: map,
+    //     position: pos,
+    //     content: 'You are Here.'
+    //   });
+    // });
+  // }
+
 
 
 function createMarker(place) {
@@ -76,6 +101,32 @@ function createMarker(place) {
     });
   });
 }
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+  $('#back_button').click(function(){
+      parent.history.back();
+      return false;
+    });
 
 // function initialize() {
 //     var myLatlng = new google.maps.LatLng( 41.907,-87.67729600470253);
